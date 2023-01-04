@@ -8,8 +8,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import CreateIcon from "@material-ui/icons/Create";
-import DeleteIcon from "@material-ui/icons/Delete";
+//import CreateIcon from "@material-ui/icons/Create";
+//import DeleteIcon from "@material-ui/icons/Delete";
 
 class UserListComponent extends Component {
   constructor(props) {
@@ -100,9 +100,6 @@ class UserListComponent extends Component {
     );
   }
 }
-const style = {
-  display: "flex",
-  justifyContent: "center",
-};
+
 
 export default UserListComponent;

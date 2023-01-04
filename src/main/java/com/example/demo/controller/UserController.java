@@ -3,16 +3,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.CrossOrigin;
-
 import com.example.demo.mapper.UserMapper;
 import com.example.demo.vo.UserVO;
 
@@ -23,41 +13,41 @@ public class UserController {
     @Autowired
     UserMapper UserMapper;
 
-    @GetMapping
+    @GetMapping(value = "")
     public List<UserVO> userList(){
-        System.out.println(userMapper.userList());
+        System.out.println(UserMapper.userList());
         System.out.println("유저리스트 출력");
-        return userMapper.userList();
+        return UserMapper.userList();
     }
 
     @PostMapping
     void insertUser(@RequestBody UserVO user){
-        userMapper.insertUser(user);
+        UserMapper.insertUser(user);
         System.out.println("유저DB저장 성공");
 
     }
 
     @GetMapping("/{id}")
     public UserVO fetchUserByID(@PathVariable int id){
-        System.out.println(userMapper.fetchUserByID(id));
-        UserVO fetchUser = userMapper.fetchUserByID(id);
+        System.out.println(UserMapper.fetchUserByID(id));
+        UserVO fetchUser = UserMapper.fetchUserByID(id);
         return fetchUser;
     }
     @PutMapping("/{id}")
-    public void updateUser(@PathVariable int id, @RequestBody UserVo user){
-        userVO updateUser = user;
+    public void updateUser(@PathVariable int id, @RequestBody UserVO user){
+        UserVO updateUser = user;
         System.out.println("업데이트 유저 =>" + updateUser);
 
-        updateUser.setFirstName(usre.getFirstName());
+        updateUser.setFirstName(user.getFirstName());
         updateUser.setLastName(user.getLastName());
         updateUser.setAge(user.getAge());
         updateUser.setSalary(user.getSalary());
-        userMapper.updateUser(updateUser);
+        UserMapper.updateUser(updateUser);
     }
 
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable int id){
-        userMapper.deleteUser(id);
+        UserMapper.deleteUser(id);
         System.out.println("유저삭제");
     }
 }
